@@ -14,4 +14,9 @@ function Total(order) {
   return (total / 100).toFixed(2);
 }
 
+console.log("QTY\tITEM\t\tTOTAL");
+order.forEach(({ quantity, itemName, unitPricePence }) => {
+  const total = ((quantity * unitPricePence) / 100).toFixed(2);
+  console.log(`${quantity}\t${itemName}\t\t${total}`);
+});
 console.log(`Total: ${Total(order)}`); 
