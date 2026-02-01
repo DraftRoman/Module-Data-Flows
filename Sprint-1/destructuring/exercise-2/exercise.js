@@ -70,3 +70,14 @@ let hogwarts = [
     occupation: "Teacher",
   },
 ];
+const gryffindorStudents = hogwarts
+  .filter(({ house }) => house === "Gryffindor")
+  .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
+
+console.log(gryffindorStudents);
+
+const teachersWithPets = hogwarts
+  .filter(({ occupation, pet }) => occupation === "Teacher" && pet)
+  .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
+
+console.log(teachersWithPets);
