@@ -1,11 +1,13 @@
 let myLibrary = [];
+export function getLibrary() {
+  return myLibrary;
+}
 
-window.addEventListener("load", () => {
-  preSet();
-  render();
-});
-
-function preSet() {
+  window.addEventListener("load", () => {
+    preSet();
+    render();
+  });
+export function preSet() {
   if (myLibrary.length == 0) {
     myLibrary.push(
       new Book("Robison Crusoe", "Daniel Defoe", "252", true),
@@ -23,7 +25,7 @@ const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const check = document.getElementById("check");
 
-function submit() {
+export function submit() {
   if (isFormValid()) {
     let book = new Book(title.value, author.value, Number(pages.value), check.checked);
     myLibrary.unshift(book);
@@ -33,13 +35,14 @@ function submit() {
     alert("Please fill all fields and make sure that pages is a positive number!");
   }
 }
-function cleanForm() {
+window.submit = submit;
+export function cleanForm() {
   title.value = "";
   author.value = ""; 
   pages.value = "";
   check.checked = false;
 }
-function isFormValid() {
+export function isFormValid() {
   return !(
     title.value == null ||
     title.value == "" ||
@@ -51,7 +54,7 @@ function isFormValid() {
   );
 }
 
-class Book {
+export class Book {
 constructor(title, author, pages, wasRead ) {
     this.title = title;
     this.author = author;
@@ -60,7 +63,7 @@ constructor(title, author, pages, wasRead ) {
   }
 }
 
-function render() {
+export function render() {
   let table = document.getElementById("display");
   while (table.rows.length > 1) {
     table.deleteRow(1);
