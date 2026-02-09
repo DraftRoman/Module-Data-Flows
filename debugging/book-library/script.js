@@ -43,14 +43,15 @@ export function cleanForm() {
   check.checked = false;
 }
 export function isFormValid() {
+  const title = document.getElementById("title");
+  const author = document.getElementById("author");
+  const pages = document.getElementById("pages");
+
   return !(
-    title.value == null ||
-    title.value == "" ||
-    author.value == null ||
-    author.value == "" ||
-    isNaN(pages.value) == null ||
-    pages.value <= 0 ||
-    pages.value == ""
+    title.value === "" ||
+    author.value === "" ||
+    pages.value === "" ||
+    Number(pages.value) <= 0
   );
 }
 
